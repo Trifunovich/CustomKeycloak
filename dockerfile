@@ -13,6 +13,6 @@ RUN /opt/keycloak/bin/kc.sh build
 FROM quay.io/keycloak/keycloak:latest
 COPY --from=builder /opt/keycloak/ /opt/keycloak/
 
-COPY ./themes/my-theme/ /opt/keycloak/themes/my-theme
+COPY ./themes/theme1/ /opt/keycloak/themes/theme1
 
 ENTRYPOINT ["/opt/keycloak/bin/kc.sh"]

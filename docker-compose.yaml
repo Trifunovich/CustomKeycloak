@@ -30,6 +30,7 @@ services:
       KC_METRICS_ENABLED: 'true'
       KC_HOSTNAME: localhost
       PROXY_ADDRESS_FORWARDING: "true"
+      KC_SPI_THEME_DEFAULT: 'theme1'
     command:
       - "-v start --optimized"
     ports:
