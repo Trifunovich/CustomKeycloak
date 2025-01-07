@@ -31,8 +31,7 @@ services:
       KC_HOSTNAME: localhost
       PROXY_ADDRESS_FORWARDING: "true"
     command:
-      - "-v start --optimized
-      "
+      - "-v start --optimized"
     ports:
       - 18443:8443
       - 18081:8080
