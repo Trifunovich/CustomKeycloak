@@ -9,28 +9,26 @@ services:
     volumes:
       - keycloak-db-data:/var/lib/postgresql/data
     environment:
-      POSTGRES_DB: keycloak
-      POSTGRES_USER: my_keycloak
-      POSTGRES_PASSWORD: My863Keycloak
+      - POSTGRES_DB=keycloak
+      - POSTGRES_USER=keycloak
+      - POSTGRES_PASSWORD=keycloak
   keycloak:
     build: .
     container_name: custom-auth-service
     environment:
       #Admin Credentials
-      KC_HOSTNAME_STRICT: 'false'
-      KC_HOSTNAME_STRICT_HTTPS: 'false'
-      KEYCLOAK_ADMIN: admin
-      KEYCLOAK_ADMIN_PASSWORD: MyKeycloak493
-      KEYCLOAK_USER: admin
-      KEYCLOAK_PASSWORD: MyKeycloak493
-      KC_DB_URL: 'jdbc:postgresql://postgres/keycloak'
-      KC_DB_USERNAME: my_keycloak
-      KC_DB_PASSWORD: My863Keycloak
-      KC_HEALTH_ENABLED: 'true'
-      KC_METRICS_ENABLED: 'true'
-      KC_HOSTNAME: localhost
-      PROXY_ADDRESS_FORWARDING: "true"
-      KC_SPI_THEME_DEFAULT: 'theme1'
+      - DB_VENDOR=POSTGRES
+      - DB_ADDR=keycloak-db
+      - DB_DATABASE=keycloak
+      - DB_USER=keycloak
+      - DB_PASSWORD=keycloak
+      - KEYCLOAK_USER=admin
+      - KEYCLOAK_PASSWORD=My863Keycloak
+      - KC_BOOTSTRAP_ADMIN_USERNAME=admin
+      - KC_BOOTSTRAP_ADMIN_PASSWORD=My863Keycloak
+      - KC_HEALTH_ENABLED=true
+      - KC_METRICS_ENABLED=true
+      - KC_SPI_THEME_DEFAULT=theme1
     command: ["start-dev"]
     
     ports:
