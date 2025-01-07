@@ -1,6 +1,6 @@
 FROM quay.io/keycloak/keycloak:21.0 as builder
 
-# Configure a database vendor
+# Configure a database vendor 
 ENV KC_DB=postgres
 
 WORKDIR /opt/keycloak
