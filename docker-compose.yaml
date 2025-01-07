@@ -31,8 +31,8 @@ services:
       KC_HOSTNAME: localhost
       PROXY_ADDRESS_FORWARDING: "true"
       KC_SPI_THEME_DEFAULT: 'theme1'
-    command:
-      - "-v start --optimized"
+    command: ["start-dev"]
+    
     ports:
       - 18443:8443
       - 18081:8080
