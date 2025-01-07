@@ -1,6 +1,5 @@
-FROM quay.io/keycloak/keycloak:21.0 as builder
-
-# Configure a database vendor 
+# Stage 1: Builder
+FROM quay.io/keycloak/keycloak:latest as builder
 ENV KC_DB=postgres
 
 WORKDIR /opt/keycloak
@@ -10,6 +9,7 @@ RUN keytool -genkeypair -storepass password -storetype PKCS12 -keyalg RSA -keysi
 
 RUN /opt/keycloak/bin/kc.sh build
 
+# Stage 2: Final
 FROM quay.io/keycloak/keycloak:latest
 COPY --from=builder /opt/keycloak/ /opt/keycloak/
 
